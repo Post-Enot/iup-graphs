@@ -1,0 +1,12 @@
+{
+  "name": "com.iup.graphs",
+  "version": "1.0.0",
+  "displayName": "Graphs",
+  "description": "Набор классов для работы с графами.",
+  "author": {
+    "name": "PostEnot",
+    "email": "ve.vyshegorodsky.cold@gmail.com",
+    "url": "https://t.me/ProcyonNihil"
+  },
+  "type": "library"
+}
