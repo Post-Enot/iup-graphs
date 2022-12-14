@@ -12,4 +12,14 @@ namespace IUP.Toolkits.Graphs
     /// поиска пути.</returns>
     public delegate IPathNode<TNodeValue> NodeSelectionFunc<TNodeValue>(
         IReadOnlyCollection<IPathNode<TNodeValue>> reachedNodes);
+    /// <summary>
+    /// Делегат функции выбора лучшего узла пути из двух.
+    /// </summary>
+    /// <typeparam name="TNodeValue">Тип значения узла графа.</typeparam>
+    /// <param name="a">Первый узел пути.</param>
+    /// <param name="b">Второй узел пути.</param>
+    /// <returns>Возвращает лучший узел пути из двух.</returns>
+    public delegate IPathNode<TNodeValue> ChooseBestPathNode<TNodeValue>(
+        IPathNode<TNodeValue> a,
+        IPathNode<TNodeValue> b);
 }

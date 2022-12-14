@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 namespace IUP.Toolkits.Graphs
 {
@@ -10,30 +9,15 @@ namespace IUP.Toolkits.Graphs
     public sealed class Path<TNodeValue>
     {
         /// <summary>
-        /// Инициализирует поля пустыми коллекциями.
-        /// </summary>
-        public Path()
-        {
-            Nodes = new IGraphNode<TNodeValue>[0];
-            Costs = new int[0];
-        }
-
-        /// <summary>
         /// Инициализирует поля, используя значения узлов пути.
         /// </summary>
         /// <param name="pathNodes"></param>
         public Path(IEnumerable<IPathNode<TNodeValue>> pathNodes)
         {
-            var values = new List<IGraphNode<TNodeValue>>();
-            var costs = new List<int>();
-            foreach (var pathNode in pathNodes)
-            {
-                //values.Add(pathNode.GraphNode);
-                //costs.Add(pathNode.Cost);
-            }
-            Nodes = values;
-            Costs = costs;
+            PathNodes = new List<IPathNode<TNodeValue>>(pathNodes);
         }
+
+        public IReadOnlyList<IPathNode<TNodeValue>> PathNodes { get; }
 
         /// <summary>
         /// Список значений узлов пути: нулевой индекс является начальной точкой.

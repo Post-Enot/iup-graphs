@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace IUP.Toolkits.Graphs
 {
@@ -22,12 +21,14 @@ namespace IUP.Toolkits.Graphs
         public static Path<TNodeValue> FindPath<TNodeValue>(
             IGraphNode<TNodeValue> startNode,
             Predicate<IPathNode<TNodeValue>> isPathFind,
-            NodeSelectionFunc<TNodeValue> nodeSelectionFunc)
+            NodeSelectionFunc<TNodeValue> nodeSelectionFunc,
+            ChooseBestPathNode<TNodeValue> bestPathNodeChooser)
         {
             var pathNodeByGraphNode = new Dictionary<IGraphNode<TNodeValue>, PathNode<TNodeValue>>();
             var reachedNodes = new HashSet<IPathNode<TNodeValue>>();
             var exploredNodes = new HashSet<IGraphNode<TNodeValue>>();
             var startPathNode = new PathNode<TNodeValue>(startNode);
+            IPathNode<TNodeValue> bestPathNode = startPathNode;
             reachedNodes.Add(startPathNode);
             pathNodeByGraphNode.Add(startNode, startPathNode);
             while (reachedNodes.Count != 0)
@@ -36,6 +37,10 @@ namespace IUP.Toolkits.Graphs
                 if (isPathFind(exploredPathNode))
                 {
                     return BuildPath(exploredPathNode);
+                }
+                else
+                {
+                    bestPathNode = bestPathNodeChooser(exploredPathNode, bestPathNode);
                 }
                 _ = reachedNodes.Remove(exploredPathNode);
                 _ = exploredNodes.Add(exploredPathNode.GraphNode);
@@ -66,7 +71,7 @@ namespace IUP.Toolkits.Graphs
                     }
                 }
             }
-            return new Path<TNodeValue>();
+            return BuildPath(bestPathNode);
         }
 
         /// <summary>
@@ -86,13 +91,6 @@ namespace IUP.Toolkits.Graphs
                 pathNode = pathNode.PreviousNode;
             }
             path.Reverse();
-            foreach (var p in path)
-            {
-                if (p != null)
-                {
-                    Debug.Log(p.GraphNode.Value);
-                }
-            }
             return new Path<TNodeValue>(path);
         }
     }
