@@ -27,10 +27,12 @@ namespace IUP.Toolkits.Graphs
             var pathNodeByGraphNode = new Dictionary<IGraphNode<TNodeValue>, PathNode<TNodeValue>>();
             var reachedNodes = new HashSet<IPathNode<TNodeValue>>();
             var exploredNodes = new HashSet<IGraphNode<TNodeValue>>();
+
             var startPathNode = new PathNode<TNodeValue>(startNode);
             IPathNode<TNodeValue> bestPathNode = startPathNode;
             reachedNodes.Add(startPathNode);
             pathNodeByGraphNode.Add(startNode, startPathNode);
+
             while (reachedNodes.Count != 0)
             {
                 IPathNode<TNodeValue> exploredPathNode = nodeSelectionFunc(reachedNodes);

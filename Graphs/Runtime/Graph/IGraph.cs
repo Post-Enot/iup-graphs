@@ -4,7 +4,7 @@
     /// Интерфейс графа.
     /// </summary>
     /// <typeparam name="TNodeValue">Тип значений узлов графа.</typeparam>
-    public interface IGraph<TNodeValue> : IReadonlyGraph<TNodeValue>
+    public interface IGraph<TNodeValue> : IReadOnlyGraph<TNodeValue>
     {
         /// <summary>
         /// Добавляет переданный узел в граф.

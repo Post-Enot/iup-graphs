@@ -3,7 +3,6 @@
     /// <summary>
     /// Ребро графа.
     /// </summary>
-    /// <typeparam name="TNode">Тип узла графа.</typeparam>
     /// <typeparam name="TNodeValue">Тип значения узла графа.</typeparam>
     public sealed class GraphEdge<TNodeValue> : IGraphEdge<TNodeValue>
     {

@@ -16,5 +16,8 @@ namespace IUP.Toolkits.Graphs
         /// Коллекция рёбер узла графа.
         /// </summary>
         public IReadOnlyCollection<IGraphEdge<TNodeValue>> Edges { get; }
+
+        /// <returns>Возвращает нумератор рёбер, связанных с данным узлом графа.</returns>
+        public new IEnumerator<IGraphEdge<TNodeValue>> GetEnumerator();
     }
 }
