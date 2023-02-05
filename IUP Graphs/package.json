@@ -1,7 +1,7 @@
 {
   "name": "com.iup.graphs",
   "version": "1.0.0",
-  "displayName": "Graphs",
+  "displayName": "IUP Graphs",
   "description": "Набор классов для работы с графами.",
   "author": {
     "name": "PostEnot",
